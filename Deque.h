@@ -1,4 +1,4 @@
-﻿#include "StdAfx.h"
+#include "StdAfx.h"
 #include <stdio.h>
 #include <iostream>
 #include <string>
@@ -10,41 +10,45 @@ private:
 	T *dinArr;
 	int cnt;
 public:
-	Deque(int Size);
-	~Deque();
-	bool IsEmpty();
-	int Count();
+	Deque(int Size);          // создание массива
+	~Deque();                 // высвобождение памяти
+	bool IsEmpty();           // проверка на пустоту
+	int Count();              // текущая размерность
 	void PushBack(T info);    // добавить в конец
 	void PushInFront(T info); // добавть в начало
 	void PopFromBack();       // удалить с конца
 	void PopFromFront();      // удалить с начала
-	T GetFirst();          // получить 1 эл-т
-	T GetLast();         // получить последний эл-т
+	T GetFirst();             // получить 1 эл-т
+	T GetLast();              // получить последний эл-т
 	void Print();             // распечатать массив
 };
 
 
-
+// задаем массив
 template <class T>
-Deque<T>::Deque(int Size)
+Deque<T>::Deque(int Size) 
 {
 	cout << Size << endl;
-    T *dinArr = new T [Size];
+   	T *dinArr = new T [Size];
 	this->dinArr = dinArr;
 	cnt = 0;
 }
 
+// удаляем массив
 template <class T>
-Deque<T>::~Deque() {
+Deque<T>::~Deque()  
+{
 	delete [] dinArr;
 }
 
+// проверка массива на пустоту
 template <class T>
 bool Deque<T>::IsEmpty()
 {
 	return cnt == 0;
 }
 
+// вывод размерности массива
 template <class T>
 int Deque<T>::Count()
 {
@@ -84,7 +88,7 @@ void Deque<T>::PushInFront(T info)
 template <class T>
 void Deque<T>::PopFromBack()
 {
-		cnt--;
+	cnt--;
 }
 
 // Удаление первого эл-та
@@ -99,17 +103,19 @@ void Deque<T>::PopFromFront()
 	}
 }
 
-// получить последний эл-т
+// получить первый эл-т
 template <class T>
 T Deque<T>::GetFirst() {
 	return dinArr[0];
 }
 
+// получить последний эл-т
 template <class T>
 T Deque<T>::GetLast() {
 	return dinArr[cnt-1];
 }
 
+// печать массива
 template <class T>
 void Deque<T>::Print() {
 	cout << "Размерность: " << cnt << endl;
